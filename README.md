@@ -56,7 +56,7 @@ library-backend/
 
 ⚙️ Installation & Setup
 1️⃣ Clone the repo
-git clone https://github.com/your-username/library-backend.git
+git clone https://github.com/Abhiishek-Chooudhary/Library-Management-System-Backend.git
 cd library-backend
 
 2️⃣ Install dependencies
@@ -114,17 +114,17 @@ DELETE /api/books/:id → Delete book
 
 🛒 Cart
 
-GET /api/cart → Get user cart
-
 POST /api/cart → Add to cart
 
 DELETE /api/cart/:id → Remove from cart
 
 📑 Issue
 
-POST /api/issue/checkout → Issue a book
+POST /api/issue/checkout → Checkout User
 
 POST /api/issue/return → Return a book  
+
+POST /api/issue/my-issue -> Book Issue of a particular user
 
 
 🔒 Security

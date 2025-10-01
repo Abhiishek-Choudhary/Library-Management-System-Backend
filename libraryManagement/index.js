@@ -7,7 +7,6 @@ dotenv.config();
 
 let isConnected = false;
 
-// rename this function so it doesn't conflict
 const appHandler = async (req, res) => {
   if (!isConnected) {
     try {
@@ -23,3 +22,4 @@ const appHandler = async (req, res) => {
 };
 
 export const handler = serverless(appHandler);
+

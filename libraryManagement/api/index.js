@@ -7,7 +7,7 @@ dotenv.config();
 
 let isConnected = false;
 
-const handler = async (req, res) => {
+const serverlessHandler = async (req, res) => {
   if (!isConnected) {
     try {
       await connectDB(process.env.MONGO_URI);
@@ -21,4 +21,4 @@ const handler = async (req, res) => {
   return app(req, res);
 };
 
-export default serverless(handler);
+export default serverless(serverlessHandler);

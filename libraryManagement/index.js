@@ -21,5 +21,6 @@ const appHandler = async (req, res) => {
   return app(req, res);
 };
 
-export const handler = serverless(appHandler);
+export default handler = serverless(appHandler);
+
 

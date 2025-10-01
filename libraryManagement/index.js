@@ -1,27 +1,25 @@
 import dotenv from "dotenv";
-import http from "http";
-
-import app from "./app.js";
-import { connectDB } from "./config/db.js";
+import serverless from "serverless-http";
+import app from "../app.js";
+import { connectDB } from "../config/db.js";
 
 dotenv.config();
 
-const PORT = process.env.PORT || 5000;
-const MONGO_URI = process.env.MONGO_URI;
+let isConnected = false;
 
-const server = http.createServer(app);
-
-async function start() {
-  try {
-    await connectDB(MONGO_URI);
-
-    server.listen(PORT, () => {
-      console.log(`🚀 Server running on http://localhost:${PORT}`);
-    });
-  } catch (err) {
-    console.error("❌ Failed to start server:", err);
-    process.exit(1);
+// rename this function so it doesn't conflict
+const appHandler = async (req, res) => {
+  if (!isConnected) {
+    try {
+      await connectDB(process.env.MONGO_URI);
+      isConnected = true;
+      console.log("MongoDB connected");
+    } catch (err) {
+      console.error("MongoDB connection failed:", err);
+      return res.status(500).json({ error: "Database connection failed" });
+    }
   }
-}
+  return app(req, res);
+};
 
-start();
+export const handler = serverless(appHandler);

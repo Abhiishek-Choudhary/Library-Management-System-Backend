@@ -56,7 +56,7 @@ library-backend/
 
 ⚙️ Installation & Setup
 1️⃣ Clone the repo
-git clone https://github.com/Abhiishek-Chooudhary/Library-Management-System-Backend.git
+git clone https://github.com/Abhiishek-Choudhary/Library-Management-System-Backend.git
 cd library-backend
 
 2️⃣ Install dependencies

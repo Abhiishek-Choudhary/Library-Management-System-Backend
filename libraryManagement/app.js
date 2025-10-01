@@ -23,10 +23,10 @@ const limiter = rateLimit({ windowMs: 60 * 1000, max: 100 });
 app.use(limiter);
 
 //routes
-app.use("/api/auth", authRoutes);
-app.use("/api/books", bookRoutes);
-app.use("/api/cart", cartRoutes);
-app.use("/api/issue", issueRoutes);
+app.use("/auth", authRoutes);
+app.use("/books", bookRoutes);
+app.use("/cart", cartRoutes);
+app.use("/issue", issueRoutes);
 
 app.get("/", (req, res) => {
   res.json({ status: "ok", time: new Date().toISOString() });
@@ -35,3 +35,4 @@ app.get("/", (req, res) => {
 app.use(errorHandler);
 
 export default app;
+
